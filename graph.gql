@@ -1,0 +1,89 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CreatePostDto {
+  _id: ID!
+  name: String!
+  batch: String!
+  images: [String!]!
+  posters: [String!]!
+  description: String!
+  fromDate: String!
+  toDate: String!
+  session: String!
+  venue: String!
+  participants: [String!]!
+  participantsCount: String!
+  chairman: [String!]!
+}
+
+type CreateUserDto {
+  _id: ID!
+  googleId: String!
+  name: String!
+  email: String!
+  photo: String!
+  dateJoined: DateTime!
+  rollNumber: String!
+  batch: Int!
+  department: String!
+  phoneNumber: String!
+  isAdmin: Boolean!
+  events: [String!]!
+  role: String!
+  team: Int!
+  year: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  hello: String!
+  posts: [CreatePostDto!]!
+  Users: [CreateUserDto!]!
+}
+
+type Mutation {
+  createPost(input: postInput!): Boolean!
+  updatePosts(input: postInput!): Boolean!
+  registerUser(_id: String!, payload: userInput!): CreateUserDto!
+}
+
+input postInput {
+  name: String
+  batch: String
+  images: [Upload!]
+  posters: [Upload!]
+  description: String
+  fromDate: String
+  toDate: String
+  session: String
+  venue: String
+  participants: [String!]
+  participantsCount: String
+  chairman: [String!]
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input userInput {
+  googleId: String
+  name: String
+  email: String
+  photo: String
+  dateJoined: DateTime
+  rollNumber: String
+  batch: Int
+  department: String
+  phoneNumber: String
+  isAdmin: Boolean
+  events: [String!]
+  role: String
+  team: Int
+  year: Int
+}
